@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void get_input(int[]);
+void player_input(int[]);
 
 int main()
 {
@@ -9,13 +9,13 @@ int main()
 	int arrayBoard[9] = { 0, 1, 2, 3, 4, 5, 6, 7, 8};
 
 	//call user input function -DV
-	get_input(arrayBoard);
+	player_input(arrayBoard);
 
 	return 0;
 }
 
 //Player input function -DV
-void get_input(int[])
+void player_input(int[])
 {
 	int playerinput;
 
