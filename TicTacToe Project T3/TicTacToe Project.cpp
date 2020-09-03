@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <time.h> 
 #include <stdlib.h>   
 #include <stdio.h>  
@@ -213,7 +213,7 @@ void playAgain()
 		exit(0);
 	}
 
-}
+}*/
 
 
 
