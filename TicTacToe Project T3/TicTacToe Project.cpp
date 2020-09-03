@@ -1,18 +1,14 @@
-
-
-
-
 #include <iostream>
 #include <time.h> 
-#include <stdlib.h>   
-#include <stdio.h> 
+#include <stdlib>   
+#include <stdio.h>
 using namespace std;
 
 char TTT_Board[9] = { '0', '1', '2', '3', '4', '5', '6', '7', '8' };
 
-int playerAI();
+char playerAI();
 void player_input(char[]);
-
+//Fixed -DV
 //fix overload -- 2 ints
 void drawBoard(char[]);
 
@@ -50,8 +46,79 @@ void player_input(char[])
 		cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
 		cin >> playerinput;
 
-		//input validation -DV
-		//need to include double selection error -DV
+
+		//call help input
+		if (playerinput = 'H')
+		{
+			callHelp();
+		}
+		//call restart input
+		else if (playerinput = 'R')
+		{
+			playAgain();
+		}
+		//changing input char to -1 to match array
+		else if (playerinput = '1')
+		{
+			playerinput = '0';
+			playerAI();
+			drawBoard(playerinput);
+
+		}
+		else if (playerinput = '2')
+		{
+			playerinput = '1';
+			drawBoard(playerinput);
+
+		}
+		else if (playerinput = '3')
+		{
+			playerinput = '2';
+			drawBoard(playerinput);
+
+		}
+		else if (playerinput = '4')
+		{
+			playerinput = '3';
+			drawBoard(playerinput);
+
+		}
+		else if (playerinput = '5')
+		{
+			playerinput = '4';
+			drawBoard(playerinput);
+
+		}
+		else if (playerinput = '6')
+		{
+			playerinput = '5';
+			drawBoard(playerinput);
+
+		}
+		else if (playerinput = '7')
+		{
+			playerinput = '6';
+			drawBoard(playerinput);
+
+		}
+		else if (playerinput = '8')
+		{
+			playerinput = '7';
+			drawBoard(playerinput);
+
+		}
+		else if (playerinput = '9')
+		{
+			playerinput = '8';
+			showBoard(playerinput);
+
+		}
+		else
+		{
+			cout << "Inlvaid Input" << endl;
+		}
+		//old input validation
+		/*
 		if (playerinput > 9 || playerinput < 1)
 		{
 			cout << "Invaild Number" << endl;
@@ -63,6 +130,7 @@ void player_input(char[])
 			// change to tylers function name
 			drawBoard((playerinput - 1), playerAI);
 		}
+		*/
 	}
 
 	
@@ -179,7 +247,7 @@ void callHelp()
 }
 
 //Draws a 3 x 3 grid and displays the corresponding input value in each square
-void drawBoard(int input[])
+void drawBoard(char input[])
 {
 	cout << "     |     |     " << endl;
 	cout << "  " << input[0] << "  |  " << input[1] << "  |  " << input[2] << "  " << endl;		//First row inputs
