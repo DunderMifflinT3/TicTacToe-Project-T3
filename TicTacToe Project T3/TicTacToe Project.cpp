@@ -17,6 +17,27 @@ int main()
 
 	return 0;
 }
+//examine game
+int checkTTT_Board()
+{
+	//check row 1 for 3 x's
+	if (TTT_Board[0] == TTT_Board[1] && TTT_Board[1] == TTT_Board[2] && TTT_Board[2] == 'X')
+	{
+		return 1;
+	}
+	else
+		//check row 2 for 3 x's
+		if (TTT_Board[3] == TTT_Board[4] && TTT_Board[4] == TTT_Board[5] && TTT_Board[5] == 'X')
+		{
+			return 1;
+		}
+		else
+			//check row 3 for 3 x's
+			if (TTT_Board[6] == TTT_Board[7] && TTT_Board[7] == TTT_Board[8] && TTT_Board[8] == 'X')
+			{
+				return 1;
+			}
+			else
 
 //Player input function -DV
 void player_input(int[])
