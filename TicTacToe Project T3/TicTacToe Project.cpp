@@ -189,3 +189,28 @@ void restart()
 {
 	drawBoard(TTT_Board);
 }
+
+// Asks User if they want to play again at the end of game
+void playAgain()
+{
+	char input;
+
+	cout << "Play again?\n Y for Yes, N for No" << endl;
+	cin >> input;
+	//loop checks if user entered correct input
+	while (input != 'Y' && input != 'y' && 'y' && input != 'N' && input != 'n')
+	{
+
+		cout << "invalid input enter again" << endl;
+		cin >> input;
+		
+	}
+	if (input == 'Y' || input == 'y') {
+		drawBoard(TTT_Board);
+		
+	}
+	else if (input == 'N' || input == 'n') {
+		exit(0);
+	}
+
+}
