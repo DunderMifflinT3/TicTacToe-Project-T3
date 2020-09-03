@@ -69,6 +69,7 @@ int checkTTT_Board()
 								}
 								else
 									return 0;
+}
 
 //Player input function -DV
 void player_input(int[])
