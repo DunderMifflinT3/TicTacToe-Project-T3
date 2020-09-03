@@ -1,9 +1,13 @@
 #include <iostream>
+#include <iostream>
+#include <time.h> 
+#include <stdlib.h>   
+#include <stdio.h>  
 using namespace std;
 
-void player_input(int[]);
-void drawBoard(int[]);
-
+void player_input(char[]);
+void drawBoard(char[]);
+int playerAI();
 int main()
 {
 	//1D array 0-8 (ensure user input - 1 to match array) -DV
@@ -58,4 +62,11 @@ void drawBoard(int input[])
 	cout << "     |     |     " << endl;
 	cout << "  " << input[6] << "  |  " << input[7] << "  |  " << input[8] << "  " << endl;		//Third row inputs
 	cout << "     |     |     " << endl;
+}
+int playerAI()
+{
+	int randNum;
+	srand(time(NULL));
+	randNum = rand() % 8;// Returns random numer from 0-8
+	return randNum;
 }
