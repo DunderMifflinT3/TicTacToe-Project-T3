@@ -8,6 +8,7 @@ int playerAI();
 void player_input(int[]);
 void drawBoard(int[]);
 void callHelp();
+void showBoard(char, char);
 
 int main()
 {
@@ -25,9 +26,9 @@ int main()
 
 	return 0;
 }
-int playerAI()
+char playerAI()
 {
-	int randNum;
+	char randNum;
 	srand(time(NULL));
 	randNum = rand() % 8;// Returns random numer from 0-8
 	return randNum;
@@ -406,6 +407,12 @@ void drawBoard(int input[])
 	cout << "     |     |     " << endl;
 	cout << "  " << input[6] << "  |  " << input[7] << "  |  " << input[8] << "  " << endl;		//Third row inputs
 	cout << "     |     |     " << endl;
+}
+
+void showBoard(char user , char  AI)
+{
+		TTT_Board[user] = 'X';
+		TTT_Board[AI] = 'O';
 }
 
 void restart()
