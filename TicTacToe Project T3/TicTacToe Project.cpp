@@ -8,6 +8,7 @@ using namespace std;
 void player_input(char[]);
 void drawBoard(char[]);
 int playerAI();
+void showBoard(char, int);
 int main()
 {
 	//1D array 0-8 (ensure user input - 1 to match array) -DV
@@ -69,4 +70,9 @@ int playerAI()
 	srand(time(NULL));
 	randNum = rand() % 8;// Returns random numer from 0-8
 	return randNum;
+}
+void showBoard(char user , char  AI)
+{
+		TTT_Board[user] = 'X';
+		TTT_Board[AI] = 'O';
 }
