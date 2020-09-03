@@ -7,7 +7,7 @@ void drawBoard(int[]);
 int main()
 {
 	//1D array 0-8 (ensure user input - 1 to match array) -DV
-	int arrayBoard[9] = { 0, 1, 2, 3, 4, 5, 6, 7, 8};
+	char arrayBoard[9] = { '0', '1', '2', '3', '4', '5', '6', '7', '8'};
 
 	//Draws the board with the values in arrayBoard
 	drawBoard(arrayBoard);
