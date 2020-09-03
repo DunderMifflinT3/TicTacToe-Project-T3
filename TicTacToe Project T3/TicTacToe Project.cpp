@@ -7,12 +7,16 @@ using namespace std;
 int playerAI();
 void player_input(int[]);
 void drawBoard(int[]);
+void callHelp();
 
 int main()
 {
 	//1D array 0-8 (ensure user input - 1 to match array) -DV
 	char TTT_Board[9] = { '0', '1', '2', '3', '4', '5', '6', '7', '8'};
 
+	//Calls Help
+	void callHelp();
+		
 	//Draws the board with the values in arrayBoard
 	drawBoard(TTT_Board);
 
@@ -157,6 +161,15 @@ void checkTTT_BoardX()
 																	else
 																		cout << "It is a Tie!" << endl;
 	}
+
+//Displays Help
+void callHelp();
+{
+	cout << "Input a number between 1 and 9 to place an X (Player 1) or an O (Player 2) in that spot." << endl;
+	cout << "Type 'R' to restart." << endl;
+	cout << "Type 'Help' for instructions on how to play." << endl;
+	cout << "Get three in a row to win!" << endl;
+}
 
 //Draws a 3 x 3 grid and displays the corresponding input value in each square
 void drawBoard(int input[])
