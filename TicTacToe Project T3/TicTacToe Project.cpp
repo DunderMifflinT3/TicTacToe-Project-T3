@@ -38,6 +38,37 @@ int checkTTT_Board()
 				return 1;
 			}
 			else
+				//check column 1 for 3 x's
+				if (TTT_Board[0] == TTT_Board[3] && TTT_Board[3] == TTT_Board[6] && TTT_Board[6] == 'X')
+				{
+					return 1;
+				}
+				else
+					//check column 2 for 3 x's
+					if (TTT_Board[1] == TTT_Board[4] && TTT_Board[4] == TTT_Board[7] && TTT_Board[7] == 'X')
+					{
+						return 1;
+					}
+					else
+						//check column 3 for 3 x's
+						if (TTT_Board[2] == TTT_Board[5] && TTT_Board[5] == TTT_Board[8] && TTT_Board[8] == 'X')
+						{
+							return 1;
+						}
+						else
+							//check top left diagnol for 3 x's
+							if (TTT_Board[0] == TTT_Board[4] && TTT_Board[4] == TTT_Board[8] && TTT_Board[8] == 'X')
+							{
+								return 1;
+							}
+							else
+								//check top right diagnol for 3 x's
+								if (TTT_Board[2] == TTT_Board[4] && TTT_Board[4] == TTT_Board[6] && TTT_Board[6] == 'X')
+								{
+									return 1;
+								}
+								else
+									return 0;
 
 //Player input function -DV
 void player_input(int[])
