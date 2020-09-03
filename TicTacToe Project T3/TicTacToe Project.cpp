@@ -160,3 +160,8 @@ void drawBoard(int input[])
 	cout << "  " << input[6] << "  |  " << input[7] << "  |  " << input[8] << "  " << endl;		//Third row inputs
 	cout << "     |     |     " << endl;
 }
+
+void restart()
+{
+	drawBoard(TTT_Board);
+}
