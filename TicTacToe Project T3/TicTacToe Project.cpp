@@ -7,68 +7,15 @@ void drawBoard(int[]);
 int main()
 {
 	//1D array 0-8 (ensure user input - 1 to match array) -DV
-	char arrayBoard[9] = { '0', '1', '2', '3', '4', '5', '6', '7', '8'};
+	char TTT_Board[9] = { '0', '1', '2', '3', '4', '5', '6', '7', '8'};
 
 	//Draws the board with the values in arrayBoard
-	drawBoard(arrayBoard);
+	drawBoard(TTT_Board);
 
 	//call user input function -DV
-	player_input(arrayBoard);
+	player_input(TTT_Board);
 
 	return 0;
-}
-//examine game
-int checkTTT_Board()
-{
-	//check row 1 for 3 x's
-	if (TTT_Board[0] == TTT_Board[1] && TTT_Board[1] == TTT_Board[2] && TTT_Board[2] == 'X')
-	{
-		return 1;
-	}
-	else
-		//check row 2 for 3 x's
-		if (TTT_Board[3] == TTT_Board[4] && TTT_Board[4] == TTT_Board[5] && TTT_Board[5] == 'X')
-		{
-			return 1;
-		}
-		else
-			//check row 3 for 3 x's
-			if (TTT_Board[6] == TTT_Board[7] && TTT_Board[7] == TTT_Board[8] && TTT_Board[8] == 'X')
-			{
-				return 1;
-			}
-			else
-				//check column 1 for 3 x's
-				if (TTT_Board[0] == TTT_Board[3] && TTT_Board[3] == TTT_Board[6] && TTT_Board[6] == 'X')
-				{
-					return 1;
-				}
-				else
-					//check column 2 for 3 x's
-					if (TTT_Board[1] == TTT_Board[4] && TTT_Board[4] == TTT_Board[7] && TTT_Board[7] == 'X')
-					{
-						return 1;
-					}
-					else
-						//check column 3 for 3 x's
-						if (TTT_Board[2] == TTT_Board[5] && TTT_Board[5] == TTT_Board[8] && TTT_Board[8] == 'X')
-						{
-							return 1;
-						}
-						else
-							//check top left diagnol for 3 x's
-							if (TTT_Board[0] == TTT_Board[4] && TTT_Board[4] == TTT_Board[8] && TTT_Board[8] == 'X')
-							{
-								return 1;
-							}
-							else
-								//check top right diagnol for 3 x's
-								if (TTT_Board[2] == TTT_Board[4] && TTT_Board[4] == TTT_Board[6] && TTT_Board[6] == 'X')
-								{
-									return 1;
-								}
-								else
-									return 0;
 }
 
 //Player input function -DV
