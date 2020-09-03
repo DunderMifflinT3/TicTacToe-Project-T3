@@ -1,6 +1,10 @@
 #include <iostream>
+#include <time.h> 
+#include <stdlib.h>   
+#include <stdio.h>  
 using namespace std;
 
+int playerAI();
 void player_input(int[]);
 void drawBoard(int[]);
 
@@ -16,6 +20,13 @@ int main()
 	player_input(TTT_Board);
 
 	return 0;
+}
+int playerAI()
+{
+	int randNum;
+	srand(time(NULL));
+	randNum = rand() % 8;// Returns random numer from 0-8
+	return randNum;
 }
 
 //Player input function -DV
