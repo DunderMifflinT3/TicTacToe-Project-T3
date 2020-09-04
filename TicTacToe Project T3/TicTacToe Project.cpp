@@ -10,6 +10,7 @@ void drawBoard(char[]);
 void playAgain();
 void callHelp();
 void showBoard(char, char);
+void checkTTT_BoardX();
 
 int main()
 {
@@ -29,6 +30,9 @@ char playerAI()
 	char randNum;
 	srand(time(NULL));
 	randNum = rand() % 8;// Returns random numer from 0-8
+	
+
+	cout << "Computer's turn" << endl;
 	return randNum;
 }
 //Player input function -DV
@@ -55,48 +59,84 @@ void player_input(char TTT_Board[])
 		else if (playerinput =='1')
 		{
 			//playerinput = '0';
+			
 			TTT_Board[0] = 'X';
 			drawBoard(TTT_Board);
+			TTT_Board[playerAI()] = 'O';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
+			
+			
 		}
 		else if (playerinput == '2')
 		{
+			
 			TTT_Board[1] = 'X';
 			drawBoard(TTT_Board);
+			TTT_Board[playerAI()] = 'O';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
+
 		}
 		else if (playerinput == '3')
 		{
+			
 			TTT_Board[2] = 'X';
 			drawBoard(TTT_Board);
+			TTT_Board[playerAI()] = 'O';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
 		}
 		else if (playerinput == '4')
 		{
+			
 			TTT_Board[3] = 'X';
 			drawBoard(TTT_Board);
+			TTT_Board[playerAI()] = 'O';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
 		}
 		else if (playerinput == '5')
 		{
+			
 			TTT_Board[4] = 'X';
 			drawBoard(TTT_Board);
+			TTT_Board[playerAI()] = 'O';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
 		}
 		else if (playerinput == '6')
 		{
 			TTT_Board[5] = 'X';
 			drawBoard(TTT_Board);
+			TTT_Board[playerAI()] = 'O';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
 		}
 		else if (playerinput == '7')
 		{
+			
 			TTT_Board[6] = 'X';
 			drawBoard(TTT_Board);
+			TTT_Board[playerAI()] = 'O';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
 		}
 		else if (playerinput == '8')
 		{
 			TTT_Board[7] = 'X';
 			drawBoard(TTT_Board);
+			TTT_Board[playerAI()] = 'O';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
 		}
 		else if (playerinput == '9')
 		{
 			TTT_Board[8] = 'X';
 			drawBoard(TTT_Board);
+			TTT_Board[playerAI()] = 'O';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
 		}
 		else
 		{
