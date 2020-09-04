@@ -1,14 +1,12 @@
 #include <iostream>
 #include <time.h> 
-#include <stdlib>   
-#include <stdio.h>
 using namespace std;
 
 char TTT_Board[9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
 char playerAI();
-void player_input(char []);
-void drawBoard(char []);
+void player_input(char[]);
+void drawBoard(char[]);
 void playAgain();
 void callHelp();
 void showBoard(char, char);
@@ -42,60 +40,60 @@ void player_input(char TTT_Board[])
 	{
 		cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
 		cin >> playerinput;
-		
+
 		//call help input
-		if (playerinput = 'H')
+		if (playerinput == 'H')
 		{
 			callHelp();
 		}
 		//call restart input
-		else if (playerinput = 'R')
+		else if (playerinput == 'R')
 		{
 			playAgain();
 		}
 		//Places Player input into array as X
-		else if (playerinput = '1')
+		else if (playerinput =='1')
 		{
 			//playerinput = '0';
 			TTT_Board[0] = 'X';
 			drawBoard(TTT_Board);
 		}
-		else if (playerinput = '2')
+		else if (playerinput == '2')
 		{
 			TTT_Board[1] = 'X';
 			drawBoard(TTT_Board);
 		}
-		else if (playerinput = '3')
+		else if (playerinput == '3')
 		{
 			TTT_Board[2] = 'X';
 			drawBoard(TTT_Board);
 		}
-		else if (playerinput = '4')
+		else if (playerinput == '4')
 		{
 			TTT_Board[3] = 'X';
 			drawBoard(TTT_Board);
 		}
-		else if (playerinput = '5')
+		else if (playerinput == '5')
 		{
 			TTT_Board[4] = 'X';
 			drawBoard(TTT_Board);
 		}
-		else if (playerinput = '6')
+		else if (playerinput == '6')
 		{
 			TTT_Board[5] = 'X';
 			drawBoard(TTT_Board);
 		}
-		else if (playerinput = '7')
+		else if (playerinput == '7')
 		{
 			TTT_Board[6] = 'X';
 			drawBoard(TTT_Board);
 		}
-		else if (playerinput = '8')
+		else if (playerinput == '8')
 		{
 			TTT_Board[7] = 'X';
 			drawBoard(TTT_Board);
 		}
-		else if (playerinput = '9')
+		else if (playerinput == '9')
 		{
 			TTT_Board[8] = 'X';
 			drawBoard(TTT_Board);
@@ -106,7 +104,7 @@ void player_input(char TTT_Board[])
 		}
 	}
 
-	
+
 }
 
 void checkTTT_BoardX()
@@ -233,10 +231,10 @@ void drawBoard(char input[])
 	cout << "     |     |     " << endl;
 }
 
-void showBoard(char user , char  AI)
+void showBoard(char user, char  AI)
 {
-		TTT_Board[user] = 'X';
-		TTT_Board[AI] = 'O';
+	TTT_Board[user] = 'X';
+	TTT_Board[AI] = 'O';
 }
 
 void restart()
@@ -259,14 +257,15 @@ void playAgain()
 		cin >> input;
 
 	}
-	if (input == 'Y' || input == 'y') 
+	if (input == 'Y' || input == 'y')
 	{
 		drawBoard(TTT_Board);
 
 	}
-	else if (input == 'N' || input == 'n') 
+	else if (input == 'N' || input == 'n')
 	{
 		exit(0);
 	}
+
 
 }
