@@ -2,7 +2,7 @@
 #include <time.h> 
 using namespace std;
 
-char TTT_Board[9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+char TTT_Board[9] = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
 
 char playerAI();
 void player_input(char[]);
@@ -51,7 +51,7 @@ void player_input(char TTT_Board[])
 			cout << "Invalid move, please pick again" << endl;
 			cin >> playerinput;
 		}
-		cout << AIHold;
+		//cout << AIHold;
 
 		//Move Check prevent double move
 		while (moveCheck(playerinput) == 0)
@@ -81,8 +81,6 @@ void player_input(char TTT_Board[])
 			drawBoard(TTT_Board);
 			checkTTT_BoardX();
 			checkTie();
-
-
 		}
 		else if (playerinput == '2')
 		{
@@ -93,7 +91,6 @@ void player_input(char TTT_Board[])
 			drawBoard(TTT_Board);
 			checkTTT_BoardX();
 			checkTie();
-
 		}
 		else if (playerinput == '3')
 		{
@@ -164,31 +161,32 @@ void player_input(char TTT_Board[])
 		}
 		else
 		{
-			cout << "Inlvaid Input" << endl;
+			cout << "Invalid Input" << endl;
 		}
 
 	}
-	checkTie();
 }
+
 //TieFunctions
 	void checkTie()
 	{
-	if (checkTTT_BoardX() != true)
-	{
-		cout << "It is a Tie!" << endl;
-	}
-
-	}
-int moveCheck(char playerinput)
-{
-	for (int i = 1; i <= 8; i++)
-		if (TTT_Board[i] == 'X' || TTT_Board[i] == 'O')
+		int filledSquares = 0;
+		for (int i = 0; i < 9; i++)
 		{
-			return 0;
+			if (TTT_Board[i] == 'X' || 'O')
+			{
+				filledSquares = filledSquares + 1;
+			}
+			else
+			{
+			}
 		}
-		else
-			return 1;
-}
+		while (checkTTT_BoardX() != true && filledSquares == 8)
+		{
+			cout << "It is a Tie!" << endl;
+			playAgain();
+		}
+	}
 
 bool checkTTT_BoardX()
 {
@@ -326,11 +324,19 @@ bool checkTTT_BoardX()
 
 }
 
-
 //Displays Help
 void callHelp()
 {
-	cout << "Input a number between 1 and 9 to place an X (Player 1) or an O (Player 2) in that spot." << endl;
+	cout << "Input a number between 1 and 9, as shown below, to place an X (Player 1) or an O (Player 2) in that spot." << endl;
+	cout << "     |     |     " << endl;
+	cout << "  1  |  2  |  3  " << endl;		//First row inputs
+	cout << "_____|_____|_____" << endl;
+	cout << "     |     |     " << endl;
+	cout << "  4  |  5  |  6  " << endl;		//Second row inputs
+	cout << "_____|_____|_____" << endl;
+	cout << "     |     |     " << endl;
+	cout << "  7  |  8  |  9  " << endl;		//Third row inputs
+	cout << "     |     |     " << endl;
 	cout << "Type 'R' to restart." << endl;
 	cout << "Type 'H' for instructions on how to play." << endl;
 	cout << "Get three in a row to win!" << endl;
@@ -356,32 +362,26 @@ void showBoard(char user, char  AI)
 	TTT_Board[AI] = 'O';
 }
 
+// Asks User if they want to play again at the end of game
 void restart()
 {
 	drawBoard(TTT_Board);
 }
 
-// Asks User if they want to play again at the end of game
-
 int moveCheck(char playerInput)
 {
-	
-	
 	int I;
 		
 		I = (int)(playerInput);
 		I=I-49;
 		
-
 		if (TTT_Board[I] == 'X'  || TTT_Board[I] == 'O')
 		{
 			return 0;
 		}
 		else
 			return 1;
-	
 }
-
 
 void playAgain()
 {
@@ -399,6 +399,10 @@ void playAgain()
 	}
 	if (input == 'Y' || input == 'y')
 	{
+		for (int i = 0; i < 8; i++)
+		{
+			TTT_Board[i] = ' ';
+		}
 		drawBoard(TTT_Board);
 
 	}
@@ -406,6 +410,4 @@ void playAgain()
 	{
 		exit(0);
 	}
-
-
 }
