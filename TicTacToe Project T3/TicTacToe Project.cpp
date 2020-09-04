@@ -4,14 +4,12 @@
 #include <stdio.h>
 using namespace std;
 
-char TTT_Board[9] = { '0', '1', '2', '3', '4', '5', '6', '7', '8' };
+char TTT_Board[9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
 char playerAI();
-void player_input(char[]);
-//Fixed -DV
-//fix overload -- 2 ints
-void drawBoard(char[]);
-
+void player_input(char []);
+void drawBoard(char []);
+void playAgain();
 void callHelp();
 void showBoard(char, char);
 
@@ -36,17 +34,15 @@ char playerAI()
 	return randNum;
 }
 //Player input function -DV
-void player_input(char[])
+void player_input(char TTT_Board[])
 {
 	char playerinput;
 
 	for (int i = 1; i <= 9; i++)
 	{
-
 		cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
 		cin >> playerinput;
-
-
+		
 		//call help input
 		if (playerinput = 'H')
 		{
@@ -57,80 +53,57 @@ void player_input(char[])
 		{
 			playAgain();
 		}
-		//changing input char to -1 to match array
+		//Places Player input into array as X
 		else if (playerinput = '1')
 		{
-			playerinput = '0';
-			playerAI();
-			drawBoard(playerinput);
-
+			//playerinput = '0';
+			TTT_Board[0] = 'X';
+			drawBoard(TTT_Board);
 		}
 		else if (playerinput = '2')
 		{
-			playerinput = '1';
-			drawBoard(playerinput);
-
+			TTT_Board[1] = 'X';
+			drawBoard(TTT_Board);
 		}
 		else if (playerinput = '3')
 		{
-			playerinput = '2';
-			drawBoard(playerinput);
-
+			TTT_Board[2] = 'X';
+			drawBoard(TTT_Board);
 		}
 		else if (playerinput = '4')
 		{
-			playerinput = '3';
-			drawBoard(playerinput);
-
+			TTT_Board[3] = 'X';
+			drawBoard(TTT_Board);
 		}
 		else if (playerinput = '5')
 		{
-			playerinput = '4';
-			drawBoard(playerinput);
-
+			TTT_Board[4] = 'X';
+			drawBoard(TTT_Board);
 		}
 		else if (playerinput = '6')
 		{
-			playerinput = '5';
-			drawBoard(playerinput);
-
+			TTT_Board[5] = 'X';
+			drawBoard(TTT_Board);
 		}
 		else if (playerinput = '7')
 		{
-			playerinput = '6';
-			drawBoard(playerinput);
-
+			TTT_Board[6] = 'X';
+			drawBoard(TTT_Board);
 		}
 		else if (playerinput = '8')
 		{
-			playerinput = '7';
-			drawBoard(playerinput);
-
+			TTT_Board[7] = 'X';
+			drawBoard(TTT_Board);
 		}
 		else if (playerinput = '9')
 		{
-			playerinput = '8';
-			showBoard(playerinput);
-
+			TTT_Board[8] = 'X';
+			drawBoard(TTT_Board);
 		}
 		else
 		{
 			cout << "Inlvaid Input" << endl;
 		}
-		//old input validation
-		/*
-		if (playerinput > 9 || playerinput < 1)
-		{
-			cout << "Invaild Number" << endl;
-		}
-		//include AI function for player2 input -DV
-		//rename showBoard and playerAI to appropriate function and variable -DV
-		else
-		{
-			// change to tylers function name
-			drawBoard((playerinput - 1), playerAI);
-		}
-		*/
 	}
 
 	
@@ -286,11 +259,13 @@ void playAgain()
 		cin >> input;
 
 	}
-	if (input == 'Y' || input == 'y') {
+	if (input == 'Y' || input == 'y') 
+	{
 		drawBoard(TTT_Board);
 
 	}
-	else if (input == 'N' || input == 'n') {
+	else if (input == 'N' || input == 'n') 
+	{
 		exit(0);
 	}
 
