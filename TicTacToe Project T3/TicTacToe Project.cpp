@@ -11,6 +11,7 @@ void playAgain();
 void callHelp();
 void showBoard(char, char);
 void checkTTT_BoardX();
+int moveCheck(char []);
 
 int main()
 {
@@ -44,6 +45,13 @@ void player_input(char TTT_Board[])
 	{
 		cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
 		cin >> playerinput;
+
+		//Move Check prevent double move
+		while (moveCheck(playerinput) == 0)
+		{
+			cout << "Invalid move, please pick again" << endl;
+			cin >> playerinput;
+		}
 
 		//call help input
 		if (playerinput == 'H')
@@ -145,6 +153,16 @@ void player_input(char TTT_Board[])
 	}
 
 
+}
+
+int moveCheck(char TTT_Board[])
+{
+	if (TTT_Board[i] == 'X' || TTT_Board[i] == 'O')
+	{
+		return 0;
+	}
+	else
+		return 1;
 }
 
 void checkTTT_BoardX()
