@@ -46,6 +46,12 @@ void player_input(char TTT_Board[])
 	{
 		cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
 		cin >> playerinput;
+		while (moveCheck(playerinput) == 0)
+		{
+			cout << "Invalid move, please pick again" << endl;
+			cin >> playerinput;
+		}
+		cout << AIHold;
 
 		//Move Check prevent double move
 		while (moveCheck(playerinput) == 0)
@@ -356,6 +362,27 @@ void restart()
 }
 
 // Asks User if they want to play again at the end of game
+
+int moveCheck(char playerInput)
+{
+	
+	
+	int I;
+		
+		I = (int)(playerInput);
+		I=I-49;
+		
+
+		if (TTT_Board[I] == 'X'  || TTT_Board[I] == 'O')
+		{
+			return 0;
+		}
+		else
+			return 1;
+	
+}
+
+
 void playAgain()
 {
 	char input;
