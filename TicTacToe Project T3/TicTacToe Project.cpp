@@ -399,7 +399,7 @@ void playAgain()
 	}
 	if (input == 'Y' || input == 'y')
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 9; i++)
 		{
 			TTT_Board[i] = ' ';
 		}
@@ -411,3 +411,4 @@ void playAgain()
 		exit(0);
 	}
 }
+
