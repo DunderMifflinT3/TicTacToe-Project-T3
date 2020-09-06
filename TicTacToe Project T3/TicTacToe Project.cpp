@@ -61,7 +61,7 @@ void player_input(char TTT_Board[])
 			callHelp();
 		}
 		//call restart input
-		else if (playerinput == 'R' || playerinput== 'r')
+		else if (playerinput == 'R' || playerinput == 'r')
 		{
 			playAgain();
 		}
@@ -133,7 +133,7 @@ void player_input(char TTT_Board[])
 		}
 		else
 		{
-			cout << "Inlvaid Input" << endl;
+			cout << "Invalid Input" << endl;
 		}
 		int count = 0, count1 = 0;
 		int AIhold = playerAI();
@@ -218,15 +218,12 @@ void checkTie()
 	int filledSquares = 0;
 	for (int i = 0; i < 9; i++)
 	{
-		if (TTT_Board[i] == 'X' || 'O')
+		if (TTT_Board[i] != ' ')
 		{
 			filledSquares = filledSquares + 1;
 		}
-		else
-		{
-		}
 	}
-	while (checkTTT_BoardX() != true && filledSquares == 8)
+	while (checkTTT_BoardX() != true && filledSquares == 9)
 	{
 		cout << "It is a Tie!" << endl;
 		playAgain();
