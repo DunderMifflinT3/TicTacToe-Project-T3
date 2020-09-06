@@ -224,7 +224,7 @@ void checkTie()
 	int filledSquares = 0;
 	for (int i = 0; i < 9; i++)
 	{
-		if (TTT_Board[i] == 'X' || 'O')
+		if (TTT_Board[i] != ' ')
 		{
 			filledSquares = filledSquares + 1;
 		}
@@ -232,7 +232,7 @@ void checkTie()
 		{
 		}
 	}
-	while (checkTTT_BoardX() != true && filledSquares == 8)
+	while (checkTTT_BoardX() != true && filledSquares == 9)
 	{
 		cout << "It is a Tie!" << endl;
 		playAgain();
