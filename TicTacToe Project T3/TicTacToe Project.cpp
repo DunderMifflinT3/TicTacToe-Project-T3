@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iostream>
 #include <time.h> 
 #include <stdlib.h>   
 #include <stdio.h> 
@@ -40,11 +41,19 @@ void player_input(char TTT_Board[])
 {
 	char playerinput;
 
+	
+
+
 	for (int i = 1; i <= 9; i++)
 	{
 		cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
 		cin >> playerinput;
-
+		while (playerinput != '1' && playerinput != '2' && playerinput != '3' && playerinput != '4' && playerinput != '5' && playerinput != '6' && playerinput != '7' && playerinput != '8'
+			&& playerinput != '9' && playerinput != 'h' && playerinput != 'H' && playerinput != 'r' && playerinput != 'R')
+		{
+			cout << "Invalid Input" << endl;
+			cin >> playerinput;
+		}
 
 		//Move Check prevent double move
 		while (moveCheck(playerinput) == 0)
@@ -61,7 +70,7 @@ void player_input(char TTT_Board[])
 			callHelp();
 		}
 		//call restart input
-		else if (playerinput == 'R' || playerinput == 'r')
+		else if (playerinput == 'R' || playerinput== 'r')
 		{
 			playAgain();
 		}
@@ -131,10 +140,7 @@ void player_input(char TTT_Board[])
 			checkTTT_BoardX();
 			checkTie();
 		}
-		else
-		{
-			cout << "Invalid Input" << endl;
-		}
+		
 		int count = 0, count1 = 0;
 		int AIhold = playerAI();
 		while (moveCheckAI(AIhold) == 0) // Ai var validation 
@@ -218,12 +224,15 @@ void checkTie()
 	int filledSquares = 0;
 	for (int i = 0; i < 9; i++)
 	{
-		if (TTT_Board[i] != ' ')
+		if (TTT_Board[i] == 'X' || 'O')
 		{
 			filledSquares = filledSquares + 1;
 		}
+		else
+		{
+		}
 	}
-	while (checkTTT_BoardX() != true && filledSquares == 9)
+	while (checkTTT_BoardX() != true && filledSquares == 8)
 	{
 		cout << "It is a Tie!" << endl;
 		playAgain();
