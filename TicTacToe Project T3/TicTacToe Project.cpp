@@ -61,12 +61,12 @@ void player_input(char TTT_Board[])
 		}
 
 		//call help input
-		if (playerinput == 'H')
+		if (playerinput == 'H' || playerinput == 'h')
 		{
 			callHelp();
 		}
 		//call restart input
-		else if (playerinput == 'R')
+		else if (playerinput == 'R' || playerinput == 'r')
 		{
 			playAgain();
 		}
@@ -168,25 +168,25 @@ void player_input(char TTT_Board[])
 }
 
 //TieFunctions
-	void checkTie()
+void checkTie()
+{
+	int filledSquares = 0;
+	for (int i = 0; i < 9; i++)
 	{
-		int filledSquares = 0;
-		for (int i = 0; i < 9; i++)
+		if (TTT_Board[i] == 'X' || 'O')
 		{
-			if (TTT_Board[i] == 'X' || 'O')
-			{
-				filledSquares = filledSquares + 1;
-			}
-			else
-			{
-			}
+			filledSquares = filledSquares + 1;
 		}
-		while (checkTTT_BoardX() != true && filledSquares == 8)
+		else
 		{
-			cout << "It is a Tie!" << endl;
-			playAgain();
 		}
 	}
+	while (checkTTT_BoardX() != true && filledSquares == 8)
+	{
+		cout << "It is a Tie!" << endl;
+		playAgain();
+	}
+}
 
 bool checkTTT_BoardX()
 {
@@ -317,7 +317,7 @@ bool checkTTT_BoardX()
 																	playAgain();
 																	return true;
 																}
-																else 
+																else
 																{
 																	return false;
 																}
@@ -371,16 +371,16 @@ void restart()
 int moveCheck(char playerInput)
 {
 	int I;
-		
-		I = (int)(playerInput);
-		I=I-49;
-		
-		if (TTT_Board[I] == 'X'  || TTT_Board[I] == 'O')
-		{
-			return 0;
-		}
-		else
-			return 1;
+
+	I = (int)(playerInput);
+	I = I - 49;
+
+	if (TTT_Board[I] == 'X' || TTT_Board[I] == 'O')
+	{
+		return 0;
+	}
+	else
+		return 1;
 }
 
 void playAgain()
@@ -404,6 +404,7 @@ void playAgain()
 			TTT_Board[i] = ' ';
 		}
 		drawBoard(TTT_Board);
+		player_input(TTT_Board);
 
 	}
 	else if (input == 'N' || input == 'n')
@@ -411,4 +412,3 @@ void playAgain()
 		exit(0);
 	}
 }
-
