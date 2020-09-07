@@ -41,15 +41,13 @@ void player_input(char TTT_Board[])
 {
 	char playerinput;
 
-	
-
-
 	for (int i = 1; i <= 9; i++)
 	{
 		cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
 		cin >> playerinput;
 		cin.ignore(10, '\n');
-
+		
+		//Prevent user error
 		while (playerinput != '1' && playerinput != '2' && playerinput != '3' && playerinput != '4' && playerinput != '5' && playerinput != '6' && playerinput != '7' && playerinput != '8'
 			&& playerinput != '9' && playerinput != 'h' && playerinput != 'H' && playerinput != 'r' && playerinput != 'R')
 		{
@@ -419,7 +417,7 @@ void restart()
 {
 	drawBoard(TTT_Board);
 }
-
+//Checks if move has been played
 int moveCheckAI(int  AI)
 {
 	if (TTT_Board[AI] == 'X' || TTT_Board[AI] == 'O')
