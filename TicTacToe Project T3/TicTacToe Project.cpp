@@ -456,7 +456,7 @@ void playAgain()
 	cout << "Play again?\n Y for Yes, N for No" << endl;
 	cin >> input;
 	//loop checks if user entered correct input
-	while (input != 'Y' && input != 'y' && 'y' && input != 'N' && input != 'n')
+	while (input != 'Y' && input != 'y' && input != 'N' && input != 'n')
 	{
 		cout << "invalid input enter again" << endl;
 		cin >> input;
