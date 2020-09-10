@@ -1,13 +1,16 @@
 #include <iostream>
 #include <iostream>
 #include <time.h> 
+#include <iostream>
+#include <iostream>
+#include <time.h> 
 #include <stdlib.h>   
 #include <stdio.h>
 #include<windows.h>
 using namespace std;
 char TTT_Board[9] = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
 void callHelp();
-void drawBoard(char[]);
+void drawBoard(char[]);// function headers
 void player_input();
 void playAgain();
 bool checkTTT_BoardX();
@@ -49,7 +52,7 @@ void drawBoard(char input[])
 }
 
 
-void playAgain()
+void playAgain()// function is called when 0 is hit and restarts game
 {
 	char input;
 	cout << "Play again?\n Y for Yes, N for No" << endl;
@@ -74,7 +77,7 @@ void playAgain()
 		exit(0);
 	}
 }
-void player_input()
+void player_input()// checks player input 
 {
 	int playerinput;
 	for (int j = 1; 1 < 9; j++)
@@ -90,14 +93,14 @@ void player_input()
 			bool test = false;
 			while (test == false)
 			{
-				for (int x = 1; x <= 9; x++)
+				for (int x = 1; x <= 9; x++)// tests for all numbers 1-9
 				{
 					if (playerinput == x && test == false)
 					{
 						test = true;
 
 					}
-					else if(playerinput== -999 || playerinput== 0)
+					else if(playerinput== -999 || playerinput== 0)// speical case numbers 
 					{
 						test = true;
 					}
@@ -109,7 +112,7 @@ void player_input()
 				}
 				//cin.ignore(10, '\n');
 			}
-			while (moveCheck(playerinput) == 0)
+			while (moveCheck(playerinput) == 0)// need to be fixed 
 			{
 				cout << "Invalid move, please pick again" << endl; // input val for player 
 				cin >> playerinput;
@@ -117,7 +120,7 @@ void player_input()
 			}
 			for (int i = 1; i <= 9; i++)
 			{
-				if (playerinput == i)
+				if (playerinput == i)// replaced all if staments 
 				{
 					TTT_Board[i - 1] = 'X';
 					drawBoard(TTT_Board);
@@ -126,7 +129,7 @@ void player_input()
 					
 				}
 			}
-			 if (playerinput == -999)
+			 if (playerinput == -999)// call help
 			{
 				callHelp();
 			}
@@ -141,7 +144,7 @@ void player_input()
 		
 	}
 }
-bool checkTTT_BoardX()
+bool checkTTT_BoardX()// improved check function 
 {
 	for (int i=0; i<8; i++)
 	{
@@ -172,7 +175,7 @@ bool checkTTT_BoardX()
 	
 	}
 }
-int moveCheck(int playerInput )
+int moveCheck(int playerInput )// needs to be finished
 {
 	int takenspots[9] = { 0,0,0,0,0,0,0,0,0 };
 	
@@ -193,3 +196,10 @@ int moveCheck(int playerInput )
 	
 	}
 }
+
+/* Tyler Notes
+Requirements 
+Code bugs out when char is in
+Ai needs to be added
+place checking needs to be implemented 
+*/
