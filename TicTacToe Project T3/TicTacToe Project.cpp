@@ -1,9 +1,6 @@
 #include <iostream>
 #include <iostream>
 #include <time.h> 
-#include <iostream>
-#include <iostream>
-#include <time.h> 
 #include <stdlib.h>   
 #include <stdio.h>
 #include<windows.h>
@@ -14,11 +11,16 @@ void drawBoard(char[]);// function headers
 void player_input();
 void playAgain();
 bool checkTTT_BoardX();
-int moveCheck(int);
+int moveCheck(int, int);
+int takenspots[9] = { 0,0,0,0,0,0,0,0,0 };
+void clearGame();
+void checkTie();
+int playerAI();
+int AImoveCheck(int);
+
 int main()
 {
-	void callHelp();
-	drawBoard(TTT_Board);
+	 callHelp();
 	player_input();
 }
 void callHelp()
@@ -65,12 +67,11 @@ void playAgain()// function is called when 0 is hit and restarts game
 	}
 	if (input == 'Y' || input == 'y')
 	{
-		for (int i = 0; i < 9; i++)
-		{
-			TTT_Board[i] = ' ';
-		}
+	
+		 clearGame();
 		drawBoard(TTT_Board);
 		player_input();
+	
 	}
 	else if (input == 'N' || input == 'n')
 	{
@@ -85,11 +86,12 @@ void player_input()// checks player input
 		cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
 		cin >> playerinput;
 		
-			/*while (isdigit(playerinput)==false)
+			while (isdigit(playerinput)==false)
 			{
-
-			}*/
-			//cin.ignore(10, '\n');
+				cout << "Invalid" << endl;
+				cin >> playerinput;
+			}
+			cin.ignore(10, '\n');
 			bool test = false;
 			while (test == false)
 			{
@@ -111,12 +113,33 @@ void player_input()// checks player input
 					cin >> playerinput;
 				}
 				//cin.ignore(10, '\n');
-			}
-			while (moveCheck(playerinput) == 0)// need to be fixed 
+	}
+
+
+
+
+
+
+			int AIhold = playerAI();
+			while (moveCheck(playerinput, AIhold ) == 0)// need to be fixed 
 			{
 				cout << "Invalid move, please pick again" << endl; // input val for player 
 				cin >> playerinput;
 				cin.ignore(10, '\n');
+			}
+			
+			int count = 0;
+			while (AImoveCheck(playerAI())==0)
+			{
+				AIhold = AImoveCheck(playerAI());
+				AImoveCheck(playerAI());
+				count++;
+				if (count == 10)
+				{
+					AIhold = 0;
+					AImoveCheck(AIhold);
+				}
+
 			}
 			for (int i = 1; i <= 9; i++)
 			{
@@ -125,10 +148,17 @@ void player_input()// checks player input
 					TTT_Board[i - 1] = 'X';
 					drawBoard(TTT_Board);
 					checkTTT_BoardX();
-					//checkTie();
-					
+					checkTie();
+
+					cout << "Computer's Turn" << endl;
+					TTT_Board[AIhold] = 'O';
+					drawBoard(TTT_Board);
+					checkTTT_BoardX();
+					checkTie();
+
 				}
 			}
+
 			 if (playerinput == -999)// call help
 			{
 				callHelp();
@@ -138,10 +168,6 @@ void player_input()// checks player input
 			{
 				playAgain();
 			}
-
-
-
-		
 	}
 }
 bool checkTTT_BoardX()// improved check function 
@@ -175,26 +201,57 @@ bool checkTTT_BoardX()// improved check function
 	
 	}
 }
-int moveCheck(int playerInput )// needs to be finished
+int moveCheck(int playerInput,int AI )// needs to be finished
 {
-	int takenspots[9] = { 0,0,0,0,0,0,0,0,0 };
 	
 	for (int x = 0; x < 8; x++)
 	{
-		if (takenspots[x]==0)
+		if (takenspots[playerInput-1]==0  )
 		{
+
 			takenspots[playerInput-1] = 1;
-			if (x==8)
-			{
+		
 				return 1;
-			}
-			
 		}
 		else
-			if (x == 8)
 			return 0;
-	
 	}
+}
+
+void clearGame()
+{
+	for (int i=0; i<=8; i++)
+	{
+		takenspots[i] = 0;
+		TTT_Board[i] = ' ';
+	}
+}
+void checkTie()
+{
+	int filledSquares = 0;
+	for (int i = 0; i < 9; i++)
+	{
+		if (TTT_Board[i] != ' ')
+		{
+			filledSquares = filledSquares + 1;
+		}
+		else
+		{
+		}
+	}
+	while (checkTTT_BoardX() != true && filledSquares == 9)
+	{
+		cout << "It is a Tie!" << endl;
+		playAgain();
+	}
+}
+int playerAI()
+{
+	int randNum;
+	srand(time(NULL));
+	randNum = rand() % 8 ;// Returns random numer from 0-8
+	randNum = randNum;
+	return randNum;
 }
 
 /* Tyler Notes
@@ -203,3 +260,19 @@ Code bugs out when char is in
 Ai needs to be added
 place checking needs to be implemented 
 */
+
+
+int AImoveCheck(int AI)
+{
+	for (int x = 0; x < 8; x++)
+	{
+		if (takenspots[AI] == 0)
+		{
+
+			takenspots[AI] = 1;
+			return 1;
+		}
+		else
+			return 0;
+	}
+}
