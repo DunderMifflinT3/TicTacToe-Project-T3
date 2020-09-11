@@ -15,6 +15,7 @@ bool checkTTT_BoardX();
 void checkTie();
 int moveCheck(char);
 int moveCheckAI(int);
+void ClearScreen();
 int main()
 {
 	//Calls Help
@@ -32,27 +33,20 @@ int playerAI()
 {
 	int randNum;
 	srand(time(NULL));
-	randNum = rand() % 8;// Returns random numer from 0-8
+	randNum = rand() % 10;// Returns random numer from 0-8
 	randNum = randNum;
 	return randNum;
 }
 //Player input function -DV
 void player_input(char TTT_Board[])
 {
-	char playerinput;
+	char playerinput=' ';
 
-
-	bool test = true;
+	
 
 	for (int i = 1; i <= 9; i++)
 	{
-			if (test == true)
-			{
-				drawBoard(TTT_Board);
-				i = i - 1;
-			}
-			test = false;
-				cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
+			cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
 			cin >> playerinput;
 			cin.ignore(10, '\n');
 
@@ -241,11 +235,7 @@ void player_input(char TTT_Board[])
 					checkTie();
 				}
 			}
-		if (playerinput == 'h' || playerinput == 'H')
-		{
-
-			test = true;
-		}
+		
 	}
 }
 //TieFunctions
@@ -270,7 +260,7 @@ void checkTie()
 }
 bool checkTTT_BoardX()// improved check function 
 {
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i <= 8; i++)
 	{
 		if (TTT_Board[i] == 'X' && TTT_Board[i + 1] == 'X' && TTT_Board[i + 2] == 'X' && (i == 0 || i == 3 || i == 6))
 		{
@@ -325,6 +315,8 @@ bool checkTTT_BoardX()// improved check function
 }//Displays Help
 void callHelp()
 {
+	
+	
 	cout << "Input a number between 1 and 9, as shown below, to place an X (Player 1) or an O (Player 2) in that spot." << endl;
 	cout << "     |     |     " << endl;
 	cout << "  1  |  2  |  3  " << endl;		//First row inputs
@@ -338,6 +330,7 @@ void callHelp()
 	cout << "Type 'R' to restart." << endl;
 	cout << "Type 'H' for instructions on how to play." << endl;
 	cout << "Get three in a row to win!" << endl;
+	
 }
 
 //Draws a 3 x 3 grid and displays the corresponding input value in each square
