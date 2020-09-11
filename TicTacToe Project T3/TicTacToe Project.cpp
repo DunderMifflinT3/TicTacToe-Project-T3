@@ -22,7 +22,7 @@ int main()
 	callHelp();
 
 	//Draws the board with the values in arrayBoard
-	
+
 
 	//call user input function -DV
 	player_input(TTT_Board);
@@ -40,202 +40,202 @@ int playerAI()
 //Player input function -DV
 void player_input(char TTT_Board[])
 {
-	char playerinput=' ';
+	char playerinput = ' ';
 
-	
+
 
 	for (int i = 1; i <= 9; i++)
 	{
-			cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
+		cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
+		cin >> playerinput;
+		cin.ignore(10, '\n');
+
+		while (playerinput != '1' && playerinput != '2' && playerinput != '3' && playerinput != '4' && playerinput != '5' && playerinput != '6' && playerinput != '7' && playerinput != '8'
+			&& playerinput != '9' && playerinput != 'h' && playerinput != 'H' && playerinput != 'r' && playerinput != 'R')
+		{
+			cout << "Invalid Input" << endl;
 			cin >> playerinput;
 			cin.ignore(10, '\n');
+		}
 
-			while (playerinput != '1' && playerinput != '2' && playerinput != '3' && playerinput != '4' && playerinput != '5' && playerinput != '6' && playerinput != '7' && playerinput != '8'
-				&& playerinput != '9' && playerinput != 'h' && playerinput != 'H' && playerinput != 'r' && playerinput != 'R')
-			{
-				cout << "Invalid Input" << endl;
-				cin >> playerinput;
-				cin.ignore(10, '\n');
-			}
+		//Move Check prevent double move
+		if (playerinput == 'H' || playerinput == 'h')
+		{
+			callHelp();
+		}
 
-			//Move Check prevent double move
-			if (playerinput == 'H' || playerinput == 'h')
-			{
-				callHelp();
-			}
-		
-			while (moveCheck(playerinput) == 0)
-			{
-				cout << "Invalid move, please pick again" << endl; // input val for player 
-				cin >> playerinput;
-				cin.ignore(10, '\n');
-			}
-			//char AIhold =static_cast<char>(playerAI());
+		while (moveCheck(playerinput) == 0)
+		{
+			cout << "Invalid move, please pick again" << endl; // input val for player 
+			cin >> playerinput;
+			cin.ignore(10, '\n');
+		}
+		//char AIhold =static_cast<char>(playerAI());
 
 
-			//call help input
-		
-			//call restart input
-			if (playerinput == 'R' || playerinput == 'r')
-			{
-				playAgain();
-			}
-			//Places Player input into array as X
-			// tests all cases of player val 
-			else if (playerinput == '1')
-			{
-				//playerinput = '0';
-				TTT_Board[0] = 'X';
-				drawBoard(TTT_Board);
-				checkTTT_BoardX();
-				checkTie();
-			}	
-			else if (playerinput == '2')
-			{
-				TTT_Board[1] = 'X';
-				drawBoard(TTT_Board);
-				checkTTT_BoardX();
-				checkTie();
-			}
-			else if (playerinput == '3')
-			{
-				TTT_Board[2] = 'X';
-				drawBoard(TTT_Board);
-				checkTTT_BoardX();
-				checkTie();
-			}	
-			else if (playerinput == '4')
-			{
-				TTT_Board[3] = 'X';
-				drawBoard(TTT_Board);
-				checkTTT_BoardX();
-				checkTie();
-			}
-			else if (playerinput == '5')
-			{
-				TTT_Board[4] = 'X';
-				drawBoard(TTT_Board);
-				checkTTT_BoardX();
-				checkTie();
-			}
-			else if (playerinput == '6')
-			{
-				TTT_Board[5] = 'X';
-				drawBoard(TTT_Board);
-				checkTTT_BoardX();
-				checkTie();
-			}
-			else if (playerinput == '7')
-			{
-				TTT_Board[6] = 'X';
-				drawBoard(TTT_Board);
-				checkTTT_BoardX();
-				checkTie();
-			}
-				else if (playerinput == '8')
-			{
-				TTT_Board[7] = 'X';
-				drawBoard(TTT_Board);
-				checkTTT_BoardX();
-				checkTie();
-			}
-			else if (playerinput == '9')
-			{
-				TTT_Board[8] = 'X';
-				drawBoard(TTT_Board);
-				checkTTT_BoardX();
-				checkTie();
-			}
+		//call help input
 
-			int count = 0, count1 = 0;
-			int AIhold = playerAI();
-			if (playerinput != 'h' && playerinput != 'H')
+		//call restart input
+		if (playerinput == 'R' || playerinput == 'r')
+		{
+			playAgain();
+		}
+		//Places Player input into array as X
+		// tests all cases of player val 
+		else if (playerinput == '1')
+		{
+			//playerinput = '0';
+			TTT_Board[0] = 'X';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
+			checkTie();
+		}
+		else if (playerinput == '2')
+		{
+			TTT_Board[1] = 'X';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
+			checkTie();
+		}
+		else if (playerinput == '3')
+		{
+			TTT_Board[2] = 'X';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
+			checkTie();
+		}
+		else if (playerinput == '4')
+		{
+			TTT_Board[3] = 'X';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
+			checkTie();
+		}
+		else if (playerinput == '5')
+		{
+			TTT_Board[4] = 'X';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
+			checkTie();
+		}
+		else if (playerinput == '6')
+		{
+			TTT_Board[5] = 'X';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
+			checkTie();
+		}
+		else if (playerinput == '7')
+		{
+			TTT_Board[6] = 'X';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
+			checkTie();
+		}
+		else if (playerinput == '8')
+		{
+			TTT_Board[7] = 'X';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
+			checkTie();
+		}
+		else if (playerinput == '9')
+		{
+			TTT_Board[8] = 'X';
+			drawBoard(TTT_Board);
+			checkTTT_BoardX();
+			checkTie();
+		}
+
+		int count = 0, count1 = 0;
+		int AIhold = playerAI();
+		if (playerinput != 'h' && playerinput != 'H')
+		{
+
+
+			while (moveCheckAI(AIhold) == 0) // Ai var validation 
 			{
-
-
-				while (moveCheckAI(AIhold) == 0) // Ai var validation 
+				AIhold = moveCheckAI(playerAI());
+				if (count > 15)// fail safe for loop of randum num 
 				{
-					AIhold = moveCheckAI(playerAI());
-					if (count > 15)// fail safe for loop of randum num 
-					{
-						AIhold = count1++;
-					}
-					count++;
+					AIhold = count1++;
 				}
-				// Rests AI var cases 
-				if (AIhold == 0)
-				{
-					TTT_Board[0] = 'O';
-					drawBoard(TTT_Board);
-					checkTTT_BoardX();
-					checkTie();
-				}
-				else if (AIhold == 1)
-				{
-					TTT_Board[1] = 'O';
-					cout << " Computer's turn" << endl;
-					drawBoard(TTT_Board);
-					checkTTT_BoardX();
-					checkTie();
-				}
-				else if (AIhold == 2)
-				{
-					TTT_Board[2] = 'O';
-					cout << " Computer's turn" << endl;
-					drawBoard(TTT_Board);
-					checkTTT_BoardX();
-					checkTie();
-				}
-				else if (AIhold == 3)
-				{
-					TTT_Board[3] = 'O';
-					cout << " Computer's turn" << endl;
-					drawBoard(TTT_Board);
-					checkTTT_BoardX();
-					checkTie();
-				}
-				else if (AIhold == 4)
-				{
-					TTT_Board[4] = 'O';
-					cout << " Computer's turn" << endl;
-					drawBoard(TTT_Board);
-					checkTTT_BoardX();
-					checkTie();
-				}
-				else if (AIhold == 5)
-				{
-					TTT_Board[5] = 'O';
-					cout << " Computer's turn" << endl;
-					drawBoard(TTT_Board);
-					checkTTT_BoardX();
-					checkTie();
-				}
-				else if (AIhold == 6)
-				{
-					TTT_Board[6] = 'O';
-					cout << " Computer's turn" << endl;
-					drawBoard(TTT_Board);
-					checkTTT_BoardX();
-					checkTie();
-				}
-				else if (AIhold == 7)
-				{
-					TTT_Board[7] = 'O';
-					cout << " Computer's turn" << endl;
-					drawBoard(TTT_Board);
-					checkTTT_BoardX();
-					checkTie();
-				}
-				else if (AIhold == 8)
-				{
-					TTT_Board[8] = 'O';
-					cout << " Computer's turn" << endl;
-					drawBoard(TTT_Board);
-					checkTTT_BoardX();
-					checkTie();
-				}
+				count++;
 			}
-		
+			// Rests AI var cases 
+			if (AIhold == 0)
+			{
+				TTT_Board[0] = 'O';
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (AIhold == 1)
+			{
+				TTT_Board[1] = 'O';
+				cout << " Computer's turn" << endl;
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (AIhold == 2)
+			{
+				TTT_Board[2] = 'O';
+				cout << " Computer's turn" << endl;
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (AIhold == 3)
+			{
+				TTT_Board[3] = 'O';
+				cout << " Computer's turn" << endl;
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (AIhold == 4)
+			{
+				TTT_Board[4] = 'O';
+				cout << " Computer's turn" << endl;
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (AIhold == 5)
+			{
+				TTT_Board[5] = 'O';
+				cout << " Computer's turn" << endl;
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (AIhold == 6)
+			{
+				TTT_Board[6] = 'O';
+				cout << " Computer's turn" << endl;
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (AIhold == 7)
+			{
+				TTT_Board[7] = 'O';
+				cout << " Computer's turn" << endl;
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (AIhold == 8)
+			{
+				TTT_Board[8] = 'O';
+				cout << " Computer's turn" << endl;
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+		}
+
 	}
 }
 //TieFunctions
@@ -315,8 +315,8 @@ bool checkTTT_BoardX()// improved check function
 }//Displays Help
 void callHelp()
 {
-	
-	
+
+
 	cout << "Input a number between 1 and 9, as shown below, to place an X (Player 1) or an O (Player 2) in that spot." << endl;
 	cout << "     |     |     " << endl;
 	cout << "  1  |  2  |  3  " << endl;		//First row inputs
@@ -330,7 +330,7 @@ void callHelp()
 	cout << "Type 'R' to restart." << endl;
 	cout << "Type 'H' for instructions on how to play." << endl;
 	cout << "Get three in a row to win!" << endl;
-	
+
 }
 
 //Draws a 3 x 3 grid and displays the corresponding input value in each square
