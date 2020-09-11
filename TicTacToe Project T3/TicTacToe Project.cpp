@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iostream>
+#include <string>
 #include <time.h> 
 #include <stdlib.h>   
 #include <stdio.h> 
@@ -15,7 +16,7 @@ bool checkTTT_BoardX();
 void checkTie();
 int moveCheck(char);
 int moveCheckAI(int);
-void ClearScreen();
+//void ClearScreen();
 int main()
 {
 	//Calls Help
@@ -48,14 +49,14 @@ void player_input(char TTT_Board[])
 	{
 		cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
 		cin >> playerinput;
-		cin.ignore(10, '\n');
+		cin.ignore(numeric_limits <streamsize> ::max(), '\n');
 
 		while (playerinput != '1' && playerinput != '2' && playerinput != '3' && playerinput != '4' && playerinput != '5' && playerinput != '6' && playerinput != '7' && playerinput != '8'
 			&& playerinput != '9' && playerinput != 'h' && playerinput != 'H' && playerinput != 'r' && playerinput != 'R')
 		{
 			cout << "Invalid Input" << endl;
 			cin >> playerinput;
-			cin.ignore(10, '\n');
+			cin.ignore(numeric_limits <streamsize> ::max(), '\n');
 		}
 
 		//Move Check prevent double move
@@ -68,7 +69,7 @@ void player_input(char TTT_Board[])
 		{
 			cout << "Invalid move, please pick again" << endl; // input val for player 
 			cin >> playerinput;
-			cin.ignore(10, '\n');
+			cin.ignore(numeric_limits <streamsize> ::max(), '\n');
 		}
 		//char AIhold =static_cast<char>(playerAI());
 
@@ -318,6 +319,8 @@ void callHelp()
 
 
 	cout << "Input a number between 1 and 9, as shown below, to place an X (Player 1) or an O (Player 2) in that spot." << endl;
+	cout << "Only first number will count as an input, all others will be ignored." << endl;
+	cout << "Cannot choose a box that already has a X or an O" << endl;
 	cout << "     |     |     " << endl;
 	cout << "  1  |  2  |  3  " << endl;		//First row inputs
 	cout << "_____|_____|_____" << endl;
