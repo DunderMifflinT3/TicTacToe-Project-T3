@@ -21,7 +21,7 @@ int main()
 	callHelp();
 
 	//Draws the board with the values in arrayBoard
-	drawBoard(TTT_Board);
+	
 
 	//call user input function -DV
 	player_input(TTT_Board);
@@ -42,191 +42,209 @@ void player_input(char TTT_Board[])
 	char playerinput;
 
 
-
+	bool test = true;
 
 	for (int i = 1; i <= 9; i++)
 	{
-		cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
-		cin >> playerinput;
-		cin.ignore(10, '\n');
-
-		while (playerinput != '1' && playerinput != '2' && playerinput != '3' && playerinput != '4' && playerinput != '5' && playerinput != '6' && playerinput != '7' && playerinput != '8'
-			&& playerinput != '9' && playerinput != 'h' && playerinput != 'H' && playerinput != 'r' && playerinput != 'R')
-		{
-			cout << "Invalid Input" << endl;
-			cin >> playerinput;
-			cin.ignore(10, '\n');
-		}
-
-		//Move Check prevent double move
-		while (moveCheck(playerinput) == 0)
-		{
-			cout << "Invalid move, please pick again" << endl; // input val for player 
-			cin >> playerinput;
-			cin.ignore(10, '\n');
-		}
-		//char AIhold =static_cast<char>(playerAI());
-
-
-		//call help input
-		if (playerinput == 'H' || playerinput == 'h')
-		{
-			callHelp();
-		}
-		//call restart input
-		else if (playerinput == 'R' || playerinput == 'r')
-		{
-			playAgain();
-		}
-		//Places Player input into array as X
-		// tests all cases of player val 
-		else if (playerinput == '1')
-		{
-			//playerinput = '0';
-			TTT_Board[0] = 'X';
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (playerinput == '2')
-		{
-			TTT_Board[1] = 'X';
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (playerinput == '3')
-		{
-			TTT_Board[2] = 'X';
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (playerinput == '4')
-		{
-			TTT_Board[3] = 'X';
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (playerinput == '5')
-		{
-			TTT_Board[4] = 'X';
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (playerinput == '6')
-		{
-			TTT_Board[5] = 'X';
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (playerinput == '7')
-		{
-			TTT_Board[6] = 'X';
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (playerinput == '8')
-		{
-			TTT_Board[7] = 'X';
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (playerinput == '9')
-		{
-			TTT_Board[8] = 'X';
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-
-		int count = 0, count1 = 0;
-		int AIhold = playerAI();
-		while (moveCheckAI(AIhold) == 0) // Ai var validation 
-		{
-			AIhold = moveCheckAI(playerAI());
-			if (count > 15)// fail safe for loop of randum num 
+			if (test == true)
 			{
-				AIhold = count1++;
+				drawBoard(TTT_Board);
+				i = i - 1;
 			}
-			count++;
-		}
-		// Rests AI var cases 
-		if (AIhold == 0)
+			test = false;
+				cout << "Player 1 pick a square by typing a number 1 - 9" << endl;
+			cin >> playerinput;
+			cin.ignore(10, '\n');
+
+			while (playerinput != '1' && playerinput != '2' && playerinput != '3' && playerinput != '4' && playerinput != '5' && playerinput != '6' && playerinput != '7' && playerinput != '8'
+				&& playerinput != '9' && playerinput != 'h' && playerinput != 'H' && playerinput != 'r' && playerinput != 'R')
+			{
+				cout << "Invalid Input" << endl;
+				cin >> playerinput;
+				cin.ignore(10, '\n');
+			}
+
+			//Move Check prevent double move
+			if (playerinput == 'H' || playerinput == 'h')
+			{
+				callHelp();
+			}
+		
+			while (moveCheck(playerinput) == 0)
+			{
+				cout << "Invalid move, please pick again" << endl; // input val for player 
+				cin >> playerinput;
+				cin.ignore(10, '\n');
+			}
+			//char AIhold =static_cast<char>(playerAI());
+
+
+			//call help input
+		
+			//call restart input
+			if (playerinput == 'R' || playerinput == 'r')
+			{
+				playAgain();
+			}
+			//Places Player input into array as X
+			// tests all cases of player val 
+			else if (playerinput == '1')
+			{
+				//playerinput = '0';
+				TTT_Board[0] = 'X';
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}	
+			else if (playerinput == '2')
+			{
+				TTT_Board[1] = 'X';
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (playerinput == '3')
+			{
+				TTT_Board[2] = 'X';
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}	
+			else if (playerinput == '4')
+			{
+				TTT_Board[3] = 'X';
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (playerinput == '5')
+			{
+				TTT_Board[4] = 'X';
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (playerinput == '6')
+			{
+				TTT_Board[5] = 'X';
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (playerinput == '7')
+			{
+				TTT_Board[6] = 'X';
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+				else if (playerinput == '8')
+			{
+				TTT_Board[7] = 'X';
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+			else if (playerinput == '9')
+			{
+				TTT_Board[8] = 'X';
+				drawBoard(TTT_Board);
+				checkTTT_BoardX();
+				checkTie();
+			}
+
+			int count = 0, count1 = 0;
+			int AIhold = playerAI();
+			if (playerinput != 'h' && playerinput != 'H')
+			{
+
+
+				while (moveCheckAI(AIhold) == 0) // Ai var validation 
+				{
+					AIhold = moveCheckAI(playerAI());
+					if (count > 15)// fail safe for loop of randum num 
+					{
+						AIhold = count1++;
+					}
+					count++;
+				}
+				// Rests AI var cases 
+				if (AIhold == 0)
+				{
+					TTT_Board[0] = 'O';
+					drawBoard(TTT_Board);
+					checkTTT_BoardX();
+					checkTie();
+				}
+				else if (AIhold == 1)
+				{
+					TTT_Board[1] = 'O';
+					cout << " Computer's turn" << endl;
+					drawBoard(TTT_Board);
+					checkTTT_BoardX();
+					checkTie();
+				}
+				else if (AIhold == 2)
+				{
+					TTT_Board[2] = 'O';
+					cout << " Computer's turn" << endl;
+					drawBoard(TTT_Board);
+					checkTTT_BoardX();
+					checkTie();
+				}
+				else if (AIhold == 3)
+				{
+					TTT_Board[3] = 'O';
+					cout << " Computer's turn" << endl;
+					drawBoard(TTT_Board);
+					checkTTT_BoardX();
+					checkTie();
+				}
+				else if (AIhold == 4)
+				{
+					TTT_Board[4] = 'O';
+					cout << " Computer's turn" << endl;
+					drawBoard(TTT_Board);
+					checkTTT_BoardX();
+					checkTie();
+				}
+				else if (AIhold == 5)
+				{
+					TTT_Board[5] = 'O';
+					cout << " Computer's turn" << endl;
+					drawBoard(TTT_Board);
+					checkTTT_BoardX();
+					checkTie();
+				}
+				else if (AIhold == 6)
+				{
+					TTT_Board[6] = 'O';
+					cout << " Computer's turn" << endl;
+					drawBoard(TTT_Board);
+					checkTTT_BoardX();
+					checkTie();
+				}
+				else if (AIhold == 7)
+				{
+					TTT_Board[7] = 'O';
+					cout << " Computer's turn" << endl;
+					drawBoard(TTT_Board);
+					checkTTT_BoardX();
+					checkTie();
+				}
+				else if (AIhold == 8)
+				{
+					TTT_Board[8] = 'O';
+					cout << " Computer's turn" << endl;
+					drawBoard(TTT_Board);
+					checkTTT_BoardX();
+					checkTie();
+				}
+			}
+		if (playerinput == 'h' || playerinput == 'H')
 		{
-			TTT_Board[0] = 'O';
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (AIhold == 1)
-		{
-			TTT_Board[1] = 'O';
-			cout << " Computer's turn" << endl;
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (AIhold == 2)
-		{
-			TTT_Board[2] = 'O';
-			cout << " Computer's turn" << endl;
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (AIhold == 3)
-		{
-			TTT_Board[3] = 'O';
-			cout << " Computer's turn" << endl;
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (AIhold == 4)
-		{
-			TTT_Board[4] = 'O';
-			cout << " Computer's turn" << endl;
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (AIhold == 5)
-		{
-			TTT_Board[5] = 'O';
-			cout << " Computer's turn" << endl;
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (AIhold == 6)
-		{
-			TTT_Board[6] = 'O';
-			cout << " Computer's turn" << endl;
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (AIhold == 7)
-		{
-			TTT_Board[7] = 'O';
-			cout << " Computer's turn" << endl;
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
-		}
-		else if (AIhold == 8)
-		{
-			TTT_Board[8] = 'O';
-			cout << " Computer's turn" << endl;
-			drawBoard(TTT_Board);
-			checkTTT_BoardX();
-			checkTie();
+
+			test = true;
 		}
 	}
 }
@@ -250,142 +268,61 @@ void checkTie()
 		playAgain();
 	}
 }
-bool checkTTT_BoardX()
+bool checkTTT_BoardX()// improved check function 
 {
-	//check row 1 for 3 x's
-	if (TTT_Board[0] == TTT_Board[1] && TTT_Board[1] == TTT_Board[2] && TTT_Board[2] == 'X')
+	for (int i = 0; i < 8; i++)
 	{
-		cout << "Congratulations Player 1 Wins!" << endl;
-		playAgain();
-		return true;
-	}
-	else
-		//check row 2 for 3 x's
-		if (TTT_Board[3] == TTT_Board[4] && TTT_Board[4] == TTT_Board[5] && TTT_Board[5] == 'X')
+		if (TTT_Board[i] == 'X' && TTT_Board[i + 1] == 'X' && TTT_Board[i + 2] == 'X' && (i == 0 || i == 3 || i == 6))
 		{
 			cout << "Congratulations Player 1 Wins!" << endl;
 			playAgain();
 			return true;
 		}
-		else
-			//check row 3 for 3 x's
-			if (TTT_Board[6] == TTT_Board[7] && TTT_Board[7] == TTT_Board[8] && TTT_Board[8] == 'X')
-			{
-				cout << "Congratulations Player 1 Wins!" << endl;
-				playAgain();
-				return true;
-			}
-			else
-				//check column 1 for 3 x's
-				if (TTT_Board[0] == TTT_Board[3] && TTT_Board[3] == TTT_Board[6] && TTT_Board[6] == 'X')
-				{
-					cout << "Congratulations Player 1 Wins!" << endl;
-					playAgain();
-					return true;
-				}
-				else
-					//check column 2 for 3 x's
-					if (TTT_Board[1] == TTT_Board[4] && TTT_Board[4] == TTT_Board[7] && TTT_Board[7] == 'X')
-					{
-						cout << "Congratulations Player 1 Wins!" << endl;
-						playAgain();
-						return true;
-					}
-					else
-						//check column 3 for 3 x's
-						if (TTT_Board[2] == TTT_Board[5] && TTT_Board[5] == TTT_Board[8] && TTT_Board[8] == 'X')
-						{
-							cout << "Congratulations Player 1 Wins!" << endl;
-							playAgain();
-							return true;
-						}
-						else
-							//check top left diagnol for 3 x's
-							if (TTT_Board[0] == TTT_Board[4] && TTT_Board[4] == TTT_Board[8] && TTT_Board[8] == 'X')
-							{
-								cout << "Congratulations Player 1 Wins!" << endl;
-								playAgain();
-								return true;
-							}
-							else
-								//check top right diagnol for 3 x's
-								if (TTT_Board[2] == TTT_Board[4] && TTT_Board[4] == TTT_Board[6] && TTT_Board[6] == 'X')
-								{
-									cout << "Congratulations Player 1 Wins!" << endl;
-									playAgain();
-									return true;
-								}
-								else
-									//check row 1 for 3 o's
-									if (TTT_Board[0] == TTT_Board[1] && TTT_Board[1] == TTT_Board[2] && TTT_Board[2] == 'O')
-									{
-										cout << "Congratulations Player 2 Wins!" << endl;
-										playAgain();
-										return true;
-									}
-									else
-										//check row 2 for 3 o's
-										if (TTT_Board[3] == TTT_Board[4] && TTT_Board[4] == TTT_Board[5] && TTT_Board[5] == 'O')
-										{
-											cout << "Congratulations Player 2 Wins!" << endl;
-											playAgain();
-											return true;
-										}
-										else
-											//check row 3 for 3 o's
-											if (TTT_Board[6] == TTT_Board[7] && TTT_Board[7] == TTT_Board[8] && TTT_Board[8] == 'O')
-											{
-												cout << "Congratulations Player 2 Wins!" << endl;
-												playAgain();
-												return true;
-											}
-											else
-												//check column 1 for 3 o's
-												if (TTT_Board[0] == TTT_Board[3] && TTT_Board[3] == TTT_Board[6] && TTT_Board[6] == 'O')
-												{
-													cout << "Congratulations Player 2 Wins!" << endl;
-													playAgain();
-													return true;
-												}
-												else
-													//check column 2 for 3 o's
-													if (TTT_Board[1] == TTT_Board[4] && TTT_Board[4] == TTT_Board[7] && TTT_Board[7] == 'O')
-													{
-														cout << "Congratulations Player 2 Wins!" << endl;
-														playAgain();
-														return true;
-													}
-													else
-														//check column 3 for 3 o's
-														if (TTT_Board[2] == TTT_Board[5] && TTT_Board[5] == TTT_Board[8] && TTT_Board[8] == 'O')
-														{
-															cout << "Congratulations Player 2 Wins!" << endl;
-															playAgain();
-															return true;
-														}
-														else
-															//check top left diagnol for 3 o's
-															if (TTT_Board[0] == TTT_Board[4] && TTT_Board[4] == TTT_Board[8] && TTT_Board[8] == 'O')
-															{
-																cout << "Congratulations Player 2 Wins!" << endl;
-																playAgain();
-																return true;
-															}
-															else
-																//check top right diagnol for 3 o's
-																if (TTT_Board[2] == TTT_Board[4] && TTT_Board[4] == TTT_Board[6] && TTT_Board[6] == 'O')
-																{
-																	cout << "Congratulations Player 2 Wins!" << endl;
-																	playAgain();
-																	return true;
-																}
-																else
-																{
-																	return false;
-																}
+		else if (TTT_Board[i] == 'X' && TTT_Board[i + 3] == 'X' && TTT_Board[i + 6] == 'X')
+		{
+			cout << "Congratulations Player 1 Wins!" << endl;
+			playAgain();
+			return true;
+		}
+		else if (TTT_Board[i] == 'X' && TTT_Board[i + 4] == 'X' && TTT_Board[i + 8] == 'X')
+		{
+			cout << "Congratulations Player 1 Wins!" << endl;
+			playAgain();
+			return true;
+		}
+		else if (TTT_Board[i + 2] == 'X' && TTT_Board[i + 4] == 'X' && TTT_Board[i + 6] == 'X' && i + 2 == 2)
+		{
+			cout << "Congratulations Player 1 Wins!" << endl;
+			playAgain();
+			return true;
+		}
+		if (TTT_Board[i] == 'O' && TTT_Board[i + 1] == 'O' && TTT_Board[i + 2] == 'O' && (i == 0 || i == 3 || i == 6))
+		{
+			cout << "Congratulations Player 2 Wins!" << endl;
+			playAgain();
+			return true;
+		}
+		else if (TTT_Board[i] == 'O' && TTT_Board[i + 3] == 'O' && TTT_Board[i + 6] == 'O')
+		{
+			cout << "Congratulations Player 2 Wins!" << endl;
+			playAgain();
+			return true;
+		}
+		else if (TTT_Board[i] == 'O' && TTT_Board[i + 4] == 'O' && TTT_Board[i + 8] == 'O')
+		{
+			cout << "Congratulations Player 2 Wins!" << endl;
+			playAgain();
+			return true;
+		}
+		else if (TTT_Board[i + 2] == 'O' && TTT_Board[i + 4] == 'O' && TTT_Board[i + 6] == 'O' && i + 2 == 2)
+		{
+			cout << "Congratulations Player 2 Wins!" << endl;
+			playAgain();
+			return true;
+		}
 
-}
-//Displays Help
+	}
+}//Displays Help
 void callHelp()
 {
 	cout << "Input a number between 1 and 9, as shown below, to place an X (Player 1) or an O (Player 2) in that spot." << endl;
