@@ -400,8 +400,9 @@ void playAgain()
 		{
 			TTT_Board[i] = ' ';
 		}
-		drawBoard(TTT_Board);
-		player_input(TTT_Board);
+		//drawBoard(TTT_Board);
+		//player_input(TTT_Board);
+		main();
 	}
 	else if (input == 'N' || input == 'n')
 	{
