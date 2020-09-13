@@ -18,6 +18,8 @@ int moveCheckAI(int);
 void ClearScreen();
 int main()
 {
+	char TTT_Board[9] = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+
 	//Calls Help
 	callHelp();
 
@@ -397,8 +399,9 @@ void playAgain()
 		{
 			TTT_Board[i] = ' ';
 		}
-		drawBoard(TTT_Board);
-		player_input(TTT_Board);
+		//drawBoard(TTT_Board);
+		//player_input(TTT_Board);
+		main();
 	}
 	else if (input == 'N' || input == 'n')
 	{
